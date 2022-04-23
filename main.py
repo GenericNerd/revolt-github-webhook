@@ -14,7 +14,7 @@ async def payload():
         commits += f"[{commit['id'][0:8]}]({commit['url']}) - {commit['message']}\n"
     embed: pyrevolt.Embed = pyrevolt.Embed.Create(title=data['repository']['full_name'], url=data['repository']['html_url'], description=commits)
     client: pyrevolt.HTTPClient = pyrevolt.HTTPClient()
-    revoltRequest: pyrevolt.Request = pyrevolt.Request(pyrevolt.Method.POST, f"/channels/{os.getenv('CHANNEL_ID')}/messages", data={"content": "<200b>", "embeds": [json.loads(embed.toJSON())]})
+    revoltRequest: pyrevolt.Request = pyrevolt.Request(pyrevolt.Method.POST, f"/channels/{os.getenv('CHANNEL_ID')}/messages", data={"content": "\ub200", "embeds": [json.loads(embed.toJSON())]})
     revoltRequest.AddAuthentication(os.getenv("TOKEN"))
     await client.Request(revoltRequest)
     await client.Close()
